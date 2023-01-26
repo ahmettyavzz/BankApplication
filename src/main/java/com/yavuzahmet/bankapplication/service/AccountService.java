@@ -2,6 +2,8 @@ package com.yavuzahmet.bankapplication.service;
 
 import com.yavuzahmet.bankapplication.converter.AccountConverter;
 import com.yavuzahmet.bankapplication.dto.account.AccountDto;
+import com.yavuzahmet.bankapplication.exception.ErrorStatusCode;
+import com.yavuzahmet.bankapplication.exception.GeneralException;
 import com.yavuzahmet.bankapplication.model.Account;
 import com.yavuzahmet.bankapplication.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +31,7 @@ public class AccountService {
         if (repository.findById(id).isPresent()) {
             return converter.accountToAccountDto(repository.findById(id).get());
         } else {
-            return null; //hata mesajı
+            throw new GeneralException(ErrorStatusCode.ACCOUNT_NOT_FOUND_BY_ID);
         }
     }
 

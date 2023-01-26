@@ -3,6 +3,8 @@ package com.yavuzahmet.bankapplication.service;
 import com.yavuzahmet.bankapplication.converter.CustomerConverter;
 import com.yavuzahmet.bankapplication.dto.customer.CustomerDto;
 import com.yavuzahmet.bankapplication.dto.customer.UpdateCustomerRequest;
+import com.yavuzahmet.bankapplication.exception.ErrorStatusCode;
+import com.yavuzahmet.bankapplication.exception.GeneralException;
 import com.yavuzahmet.bankapplication.model.City;
 import com.yavuzahmet.bankapplication.model.Customer;
 import com.yavuzahmet.bankapplication.repository.CustomerRepository;
@@ -50,7 +52,7 @@ public class CustomerService {
             customerRepository.save(toBeUpdatedData);
             return customerConverter.customerToCustomerDto(toBeUpdatedData);
         } else {
-            return null; //exception olmalı
+            throw new GeneralException(ErrorStatusCode.CUSTOMER_NOT_FOUND_BY_ID);
         }
     }
 }
