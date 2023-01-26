@@ -5,6 +5,7 @@ import com.yavuzahmet.bankapplication.dto.account.AccountDto;
 import com.yavuzahmet.bankapplication.dto.account.CreateAccountRequest;
 import com.yavuzahmet.bankapplication.dto.account.UpdateAccountRequest;
 import com.yavuzahmet.bankapplication.service.AccountService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,7 +44,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public ResponseEntity<AccountDto> createAccount(@RequestBody CreateAccountRequest request) {
+    public ResponseEntity<AccountDto> createAccount(@Valid @RequestBody CreateAccountRequest request) {
         return ResponseEntity.ok(accountService.createAccount(accountConverter.createAccountRequestToAccount(request)));
     }
 
