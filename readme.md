@@ -1,16 +1,13 @@
-## 1-Customer
-* id
-* name
-* dateOfBirth
-* address
+>Java - Spring Boot
 
+>Spring Data JPA
 
-
-## 2-Account
-* id
-* customerId
-* balance
-* city
-* currency
+>Exception Handling
 
 >H2 Database
+
+>Lombok
+
+
+
+
